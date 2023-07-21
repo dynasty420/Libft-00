@@ -6,18 +6,16 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 18:53:38 by yut               #+#    #+#             */
-/*   Updated: 2023/07/14 23:07:23 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/22 00:04:15 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strncpy(char *dest, const char *src, unsigned int n);
-static int	ft_cntwrd(char const *s, char c);
-static char	*my_strndup(const char *str, size_t n);
-static void	ft_initiate_vars(size_t *i, size_t *j, int *k);
+char		**ft_setwords(char **ans, char *str, char c, int strs_count);
 char		**ft_split(char const *s, char c);
 static void	*ft_free(char **str, int cntr);
+static int	ft_cntwrd(char const *s, char c);
 
 static int	ft_cntwrd(char const *s, char c)
 {
@@ -41,63 +39,67 @@ static int	ft_cntwrd(char const *s, char c)
 	return (cntr);
 }
 
-char	*my_strndup(const char *str, size_t n)
+int	store_word(char **ans, int k, int strlen, char *src)
 {
-	size_t	i;
-	char	*dst;
+	int	i;
+
+	ans[k] = malloc(sizeof(char) * (strlen + 1));
+	if (ans[k] == NULL)
+	{
+		ft_free(ans, k);
+		return (0);
+	}
+	i = 0;
+	while (i < strlen && src[i])
+	{
+		ans[k][i] = src[i];
+		i++;
+	}
+	ans[k][i] = '\0';
+	return (1);
+}
+
+char	**ft_setwords(char **ans, char *str, char c, int strs_count)
+{
+	int	i;
+	int	k;
+	int	strlen;
 
 	i = 0;
-	dst = (char *)malloc(sizeof(char) * n + 1);
-	if (!dst)
-		return (0);
-	while (str[i] && i < n)
+	k = 0;
+	while (k < strs_count)
 	{
-		dst[i] = str[i];
-		i++;
+		while (str[i] != '\0' && str[i] == c)
+			i++;
+		strlen = 0;
+		while (str[i] != '\0' && str[i] != c)
+		{
+			strlen++;
+			i++;
+		}
+		if (store_word(ans, k, strlen, &str[i - strlen]) == 0)
+			return (NULL);
+		k++;
 	}
-	while (i < n)
-	{
-		dst[i] = '\0';
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
+	ans[k] = NULL;
+	return (ans);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	size_t	j;
-	int		k;
-	char	**tab;
+	int		strs_count;
+	char	**ans;
 
-	ft_initiate_vars(&i, &j, &k);
-	tab = (char **)malloc(sizeof(char *) * (ft_cntwrd(s, c)) + 1);
-	if (tab == NULL)
+	if (s == NULL)
 		return (NULL);
-	while (s[i])
-	{
-		while (s[i] == c)
-			j = ++i;
-		while (s[i] != '\0' && s[i] != c)
-			i++;
-		if (i > j)
-		{
-			tab[k] = my_strndup(s + j, i - j);
-			if (tab[k] == NULL)
-				return (ft_free(tab, k));
-			k++;
-		}
-	}
-	tab[k] = NULL;
-	return (tab);
-}
-
-static void	ft_initiate_vars(size_t *i, size_t *j, int *k)
-{
-	*i = 0;
-	*j = 0;
-	*k = 0;
+	strs_count = ft_cntwrd(s, c);
+	ans = (char **)malloc(sizeof(char *) * (strs_count + 1));
+	if (ans == NULL)
+		return (NULL);
+	ans = ft_setwords(ans, (char *)s, c, strs_count);
+	if (ans == NULL)
+		return (NULL);
+	return (ans);
 }
 
 static void	*ft_free(char **str, int cntr)
@@ -116,8 +118,9 @@ static void	*ft_free(char **str, int cntr)
 
 // int	main(void)
 // {
-// 	char *str = ",,,hello,,,world,,,42,,,tokyo,,,,";
-// 	char **result = ft_split(str, ',');
+// 	// char	**expected = ft_split("\0aa\0bbb", '\0');
+// 	char *str = "\0aa\0bbb";
+// 	char **result = ft_split(str, '\0');
 // 	printf("The result is: %s\n", result[0]);
 // 	printf("The result is: %s\n", result[1]);
 // 	printf("The result is: %s\n", result[2]);
