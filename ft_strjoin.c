@@ -6,7 +6,7 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 19:23:37 by yut               #+#    #+#             */
-/*   Updated: 2023/07/14 23:57:32 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/21 18:44:59 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
-	size_t	s1_len;
-	size_t	s2_len;
 	char	*s3;
 	size_t	i;
 	size_t	n;
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	s3 = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	s3 = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (s3 == NULL)
 		return (NULL);
 	i = 0;
@@ -40,6 +38,23 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	s3[i + n] = '\0';
 	return (s3);
 }
+
+// size_t	ft_strlen(const char *s)
+// {
+// 	size_t	len;
+
+// 	len = 0;
+// 	while (s[len])
+// 		len++;
+// 	return (len);
+// }
+
+// void ft_check(const char *s1, const char *s2)
+// {
+// 	if (s1 == NULL || s2 == NULL)
+// 		return (NULL);
+// 	return ;
+// }
 
 // #include <string.h>
 

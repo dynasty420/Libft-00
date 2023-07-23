@@ -6,7 +6,7 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 00:03:32 by yut               #+#    #+#             */
-/*   Updated: 2023/07/15 00:06:33 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/21 16:21:07 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (haystack == NULL)
+	if (haystack == NULL && len == 0)
 		return (NULL);
-
 	i = 0;
 	if (needle[0] == '\0')
 		return ((char *)haystack);

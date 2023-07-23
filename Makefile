@@ -14,7 +14,7 @@ BONUS_OBJS	= $(BONUS:%.c=%.o)
 NAME		= libft.a
 AR			= ar rcs
 RM			= rm -f
-GCC			= gcc
+CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 
 ifdef IF_BONUS
@@ -24,7 +24,7 @@ endif
 all:		${NAME}
 
 .c.o:		
-					 ${GCC} ${CFLAGS} -c $< -o $@
+					 ${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}:		${OBJS}
 					${AR} $@ $^

@@ -6,7 +6,7 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:42:05 by yut               #+#    #+#             */
-/*   Updated: 2023/07/15 00:11:04 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/22 18:20:42 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strtrim(const char *s1, const char *set)
 	int	i;
 	int	j;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	i = 0;
 	j = ft_strlen(s1) - 1;
 	while (to_trim(set, s1[i]))
@@ -35,8 +37,8 @@ static char	*new_str(const char *s1, size_t start, size_t end)
 	char	*str;
 	size_t	i;
 
-	if (end <= 0 || start >= strlen(s1))
-		return (strdup(""));
+	if (end <= 0 || start >= ft_strlen(s1))
+		return (ft_strdup(""));
 	str = ft_calloc(end + 1, sizeof(char));
 	if (str == NULL)
 		return (NULL);

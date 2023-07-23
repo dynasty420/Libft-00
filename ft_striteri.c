@@ -6,7 +6,7 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 21:10:44 by yut               #+#    #+#             */
-/*   Updated: 2023/07/14 23:50:04 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/21 16:01:03 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	unsigned int	i;
 
 	i = 0;
+	if (s == NULL || f == NULL)
+		return ;
 	while (s[i] != '\0')
 	{
 		(*f)(i, &s[i]);

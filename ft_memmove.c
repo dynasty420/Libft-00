@@ -6,7 +6,7 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 07:17:51 by yut               #+#    #+#             */
-/*   Updated: 2023/07/14 23:48:18 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/22 16:50:05 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	char		*tmp_d;
 	const char	*tmp_s;
 
+	if (dst == NULL && src == NULL)
+		return (NULL);
 	tmp_d = (char *)dst;
 	tmp_s = (const char *)src;
 	if (dst > src)

@@ -6,7 +6,7 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 22:14:53 by yut               #+#    #+#             */
-/*   Updated: 2023/07/14 23:46:35 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/22 00:34:58 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ t_list	*ft_lstnew(void *content)
 	if (new == NULL)
 		return (NULL);
 	new->content = content;
-	new->next = 0;
+	new->next = NULL;
 	return (new);
 }

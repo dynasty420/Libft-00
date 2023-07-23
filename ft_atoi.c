@@ -6,7 +6,7 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 00:27:02 by yut               #+#    #+#             */
-/*   Updated: 2023/07/14 23:30:46 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/22 18:26:39 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static long	ft_max_result(const char *str)
 
 	i = 0;
 	result = 0;
-	while (ft_isdigit(str[i]))
+	while (ft_isdigit(str[i]) != 0)
 	{
 		if (result > LONG_MAX / 10)
 			return (LONG_MAX);
@@ -42,7 +42,7 @@ static long	ft_min_result(const char *str)
 
 	i = 0;
 	result = 0;
-	while (ft_isdigit(str[i]))
+	while (ft_isdigit(str[i]) != 0)
 	{
 		if (result < LONG_MIN / 10)
 			return (LONG_MIN);
@@ -61,7 +61,7 @@ int	ft_atoi(const char *str)
 
 	sign = 1;
 	i = 0;
-	if (!str && !*str)
+	if (str[i] == '\0' && str == NULL)
 		return (0);
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;

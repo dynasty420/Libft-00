@@ -6,7 +6,7 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 23:20:36 by yut               #+#    #+#             */
-/*   Updated: 2023/07/15 22:36:37 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/22 16:49:11 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*pre_conv(int len)
 	char	*tmp;
 
 	tmp = malloc((len + 1) * sizeof(char));
-	if (!tmp)
+	if (tmp == NULL)
 		return (NULL);
 	tmp[0] = '0';
 	return (tmp);

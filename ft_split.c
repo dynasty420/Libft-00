@@ -6,7 +6,7 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 18:53:38 by yut               #+#    #+#             */
-/*   Updated: 2023/07/22 00:04:15 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/22 18:40:42 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_cntwrd(char const *s, char c)
 
 	i = 0;
 	cntr = 0;
-	while (s[i])
+	while (s[i] != '\0')
 	{
 		while (s[i] == c)
 			i++;
@@ -33,7 +33,7 @@ static int	ft_cntwrd(char const *s, char c)
 			cntr++;
 			i++;
 		}
-		while (s[i] && (s[i] != c))
+		while (s[i] != '\0' && (s[i] != c))
 			i++;
 	}
 	return (cntr);
@@ -50,7 +50,7 @@ int	store_word(char **ans, int k, int strlen, char *src)
 		return (0);
 	}
 	i = 0;
-	while (i < strlen && src[i])
+	while (i < strlen && src[i] != '\0')
 	{
 		ans[k][i] = src[i];
 		i++;

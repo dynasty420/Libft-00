@@ -6,7 +6,7 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 00:27:01 by yut               #+#    #+#             */
-/*   Updated: 2023/07/14 23:48:09 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/22 18:29:14 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char	*tmp_dst;
 	unsigned char	*tmp_src;
 
-	if (dst == (void *)0 && src == (void *)0)
+	if (dst == NULL && src == NULL)
 		return (dst);
 	tmp_dst = (unsigned char *)dst;
 	tmp_src = (unsigned char *)src;
