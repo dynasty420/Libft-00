@@ -6,7 +6,7 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 01:19:25 by yut               #+#    #+#             */
-/*   Updated: 2023/07/24 17:10:05 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/24 18:06:40 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	ft_isalnum(int c)
 	return (ft_isalpha(c) || ft_isdigit(c));
 }
 
-#include <ctype.h>
-#include <stdio.h>
-#include <string.h>
+// #include <ctype.h>
+// #include <stdio.h>
+// #include <string.h>
 
 // int	main(void)
 // {
