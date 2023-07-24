@@ -6,7 +6,7 @@
 /*   By: yut <yut@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 00:27:01 by yut               #+#    #+#             */
-/*   Updated: 2023/07/22 18:29:14 by yut              ###   ########.fr       */
+/*   Updated: 2023/07/24 15:09:38 by yut              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	unsigned char	*tmp_dst;
 	unsigned char	*tmp_src;
+	size_t	i;
+
+	i = 0;
 
 	if (dst == NULL && src == NULL)
 		return (dst);
 	tmp_dst = (unsigned char *)dst;
 	tmp_src = (unsigned char *)src;
-	while (n > 0)
+	while (i < n)
 	{
-		*(tmp_dst++) = *(tmp_src++);
-		n--;
+		tmp_dst[i] = tmp_src[i];
+		i++;
 	}
 	return (dst);
 }
@@ -40,7 +43,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 //     char dst[1024] = "ABCDEFGHIJ";
 //     ft_memcpy(str11, dst, 6);
 //     memcpy(str12, dst, 6);
-//     printf("zisaku  : %s\n", str11);
+//     printf("jisaku  : %s\n", str11);
 //     printf("library : %s\n", str12);
 
 // }
